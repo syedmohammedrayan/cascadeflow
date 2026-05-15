@@ -361,7 +361,7 @@ Default: length + confidence (logprobs) + format checks. Opt in to ML-based sema
 - Python: `pip install cascadeflow[semantic]` → `from cascadeflow.quality.semantic import SemanticQualityChecker`
 - TS: `npm install @cascadeflow/ml @huggingface/transformers`, then `quality: { useSemanticValidation: true, semanticThreshold: 0.5 }` on `CascadeAgent`
 
-Tune `qualityThreshold` (TS) / `quality_threshold` (Py) to hit a target drafter-handled rate. 0.6–0.8 is a reasonable hackathon default. Higher threshold → more escalations → less savings.
+Tune `qualityThreshold` (TS) / `quality_threshold` (Py) to hit a target drafter-handled rate. 0.6-0.8 is a reasonable starting range. Higher threshold means more escalations and less savings.
 
 ## Multi-tenant demos — user profiles & tiers
 
@@ -370,7 +370,7 @@ from cascadeflow import UserProfile, UserProfileManager, TierLevel, TIER_PRESETS
 # Per-user budget enforcement, tier-aware routing (FREE/STARTER/PRO/BUSINESS/ENTERPRISE)
 ```
 
-See `examples/user_profile_usage.py` and `examples/user_budget_tracking.py`. Great for SaaS-style hackathon submissions.
+See `examples/user_profile_usage.py` and `examples/user_budget_tracking.py`. Useful for SaaS-style demos and multi-tenant product flows.
 
 ## Framework integrations (pick one, don't reinvent)
 
@@ -428,7 +428,7 @@ TS: `result.savingsPercentage` directly — use it in the UI.
 
 If you discover a bug **inside cascadeflow itself** (the `cascadeflow` Python package, `@cascadeflow/core`, or any integration package), the skill expects you to fix it upstream — fork, patch, push, open a PR — not paper over it locally. Everything ships from one monorepo: `lemony-ai/cascadeflow`.
 
-If the bug is in **your own hackathon app**, this skill has no opinion — follow your project's normal workflow. The flow below is for upstream fixes only.
+If the bug is in **your own app**, this skill has no opinion — follow your project's normal workflow. The flow below is for upstream fixes only.
 
 ### Where the code lives (so the agent doesn't guess)
 
@@ -502,10 +502,10 @@ gh pr create --repo lemony-ai/cascadeflow --base main \
 
 ### Unblock the demo while the PR is in review
 
-Don't wait for the merge — install your patched fork into the hackathon app:
+Don't wait for the merge — install your patched fork into the app that needs the fix:
 
 - **Python:** `pip install -e /path/to/your/cascadeflow-fork`
-- **TypeScript:** `pnpm pack` inside the patched package, then `npm install /path/to/cascadeflow-<pkg>-x.y.z.tgz` in the hackathon app. (`npm link` works but is flaky with pnpm workspaces.)
+- **TypeScript:** `pnpm pack` inside the patched package, then `npm install /path/to/cascadeflow-<pkg>-x.y.z.tgz` in the target app. (`npm link` works but is flaky with pnpm workspaces.)
 
 After the PR merges and a release ships, swap back to the published package.
 
