@@ -746,7 +746,11 @@ class CascadeAgent:
     def _get_tool_complete_callable(self, provider: Any):
         from cascadeflow.providers.base import BaseProvider
 
-        return provider.complete if isinstance(provider, BaseProvider) else provider.complete_with_tools
+        return (
+            provider.complete
+            if isinstance(provider, BaseProvider)
+            else provider.complete_with_tools
+        )
 
     def _normalize_messages(
         self, query: str, messages: Optional[list[dict[str, Any]]]
