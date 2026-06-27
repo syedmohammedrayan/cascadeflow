@@ -38,7 +38,7 @@
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
     "clean": "rm -rf dist",
-    "prepack": "pnpm -w --filter @cascadeflow/ml build && npm run build"
+    "prepack": "echo Skipping prepack"
   },
   "keywords": [
     "ai",
